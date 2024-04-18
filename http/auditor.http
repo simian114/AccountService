@@ -1,0 +1,15 @@
+### get all events
+GET localhost:28852/api/security/events
+Authorization: Basic auditor@acme.com 123456789123456789
+
+### get all events with invalid password
+GET localhost:28852/api/security/events
+Authorization: Basic auditor@acme.com 1234567891234
+
+
+### get all events with invalid role
+GET localhost:28852/api/security/events
+Authorization: Basic maxmustermann@google.com 12345678
+
+## #Authorization: Basic auditor@acme.com 12345678
+

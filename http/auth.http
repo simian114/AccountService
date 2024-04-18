@@ -1,0 +1,33 @@
+### signup
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "admin@acme.com",
+  "password": "123456789123456789"
+}
+
+### signup
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "user@acme.com",
+  "password": "123456789123456789"
+}
+
+### signup auditor
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+Authorization: Basic admin@acme.com 123456789123456789
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "IvanIvanov2@acme.com",
+  "password": "123456789123456789"
+}

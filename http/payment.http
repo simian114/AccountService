@@ -1,0 +1,87 @@
+### store payments
+POST localhost:28852/api/acct/payments
+Content-Type: application/json
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+[
+  {
+    "employee": "johndoe@acme.com",
+    "period": "10-2021",
+    "salary": 123456
+  }
+]
+
+### store payments with minus
+POST localhost:28852/api/acct/payments
+Content-Type: application/json
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+[
+  {
+    "employee": "johndoe@acme.com",
+    "period": "11-2025",
+    "salary": -1
+  }
+]
+
+### store payments with minus
+PUT localhost:28852/api/acct/payments
+Content-Type: application/json
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+{
+  "employee": "johndoe@acme.com",
+  "period": "13-2021",
+  "salary": 1
+}
+
+
+
+### store invalid payments
+POST localhost:28852/api/acct/payments
+Content-Type: application/json
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+[
+  {
+    "employee": "johndoe@acme.com",
+    "period": "13-2021",
+    "salary": 123456
+  },
+  {
+    "employee": "johndoe@acme.com",
+    "period": "02-2021",
+    "salary": 123456
+  },
+  {
+    "employee": "johndoe@acme.com",
+    "period": "03-2021",
+    "salary": 123456
+  }
+]
+
+### update payment
+PUT localhost:28852/api/acct/payments
+Content-Type: application/json
+
+{
+  "employee": "johndoe@acme.com",
+  "period": "11-2021",
+  "salary": 5455555
+}
+
+### get my paymentlist
+GET localhost:28852/api/empl/payment
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+### get specific...
+GET localhost:28852/api/empl/payment?period=03-2021
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+### get specific with invalid...
+GET localhost:28852/api/empl/payment?period=13-2021
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+
+### get h2-console
+GET localhost:28852/h2-console

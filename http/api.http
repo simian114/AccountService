@@ -1,0 +1,84 @@
+### valid signup
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "johndoe@acme.com",
+  "password": "123456789123456789"
+}
+
+### already exists. email is uppercase
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "johnDoe@acme.com",
+  "password": "secret"
+}
+
+### invalid password length
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "hell@acme.com",
+  "password": "secret"
+}
+
+### invalid password breached
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "hewaasdfll@acme.com",
+  "password": "PasswordForJanuary"
+}
+
+
+### invalid signup becasue not acme email
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "asdf",
+  "lastname": "lastname",
+  "email": "hello@acme.co",
+  "password": "secret"
+}
+
+### for test
+GET localhost:28852/api/empl/payment
+Authorization: Basic johndoe@acme.com secretasdfasdf
+
+### for test
+GET localhost:28852/api/empl/payment
+Authorization: Basic johDoe@acme.com secret
+
+
+### valid signup
+POST localhost:28852/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastname": "Doe",
+  "email": "password@acme.com",
+  "password": "123456789123456789"
+}
+
+
+### valid change password
+POST localhost:28852/api/auth/changepass
+Authorization: Basic password@acme.com 123456789123456789
+Content-Type: application/json
+
+{
+  "new_password": "aaaaaaaaaaaaaaaaaaaaa"
+}

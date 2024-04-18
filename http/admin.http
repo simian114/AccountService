@@ -1,0 +1,79 @@
+### get user list
+GET localhost:28852/api/admin/user
+Authorization: Basic admin@acme.com 123456789123456789
+
+### get user list without auth
+GET localhost:28852/api/admin/user
+
+### get user list with USER auth
+GET localhost:28852/api/admin/user/
+Authorization: Basic user@acme.com 123456789123456789
+
+### get user list
+GET localhost:28852/api/admin/users
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+### delete user
+DELETE localhost:28852/api/admin/user/user@acme.com
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+### delete user with empty
+DELETE localhost:28852/api/admin/user
+Authorization: Basic user@acme.com 123456789123456789
+
+### delete user with invalid email
+DELETE localhost:28852/api/admin/user/johndoe@goole.com
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+
+### delete admin user
+DELETE localhost:28852/api/admin/user/johndoe@acme.com
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+### delete admin user with non user
+DELETE localhost:28852/api/admin/user/asdf@acme.com
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+### role change to already has (USER)
+PUT localhost:28852/api/admin/user/role
+Content-Type: application/json
+Authorization: Basic admin@acme.com 123456789123456789
+
+{
+  "user": "auditor@acme.com",
+  "role": "ACCOUNTANT",
+  "operation": "REMOVE"
+}
+
+### role change to (ACCOUNTANT)
+PUT localhost:28852/api/admin/user/role
+Content-Type: application/json
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+{
+  "user": "user@acme.com",
+  "role": "ACCOUNTANT",
+  "operation": "GRANT"
+}
+
+
+### remove role
+PUT localhost:28852/api/admin/user/role
+Content-Type: application/json
+Authorization: Basic johndoe@acme.com 123456789123456789
+
+{
+  "user": "user@acme.com",
+  "role": "ADMINISTRATOR",
+  "operation": "REMOVE"
+}
+
+### lock
+PUT localhost:28852/api/admin/user/access
+Content-Type: application/json
+Authorization: Basic admin@acme.com 1234567891234
+
+{
+  "user": "admin@acme.com",
+  "operation": "LOCK"
+}
